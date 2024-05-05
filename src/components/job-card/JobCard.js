@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect,useRef } from 'react'
 import "./JobCard.css"
 import { Button } from '@mui/material'
 import BoltIcon from '@mui/icons-material/Bolt';
 const JobCard = (props) => {
+    const refJobDetail = useRef(null);
     const {
         jobDetailsFromCompany,
         jobRole,
@@ -15,7 +16,40 @@ const JobCard = (props) => {
         companyName,
         logoUrl} =props.jobDetail;
     
+    useEffect(()=>{
+        const stopClickEventInsideJobDetail=(event)=>{
 
+            event.stopPropagation();
+        }
+
+        document.querySelector(".job-detail").addEventListener("click",stopClickEventInsideJobDetail);
+
+        return ()=>{
+            window.removeEventListener("click",stopClickEventInsideJobDetail);
+        }
+
+    },[])
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+           
+            if (!event.target.matches(".job-detail") && !event.target.matches("a") ) {
+                if(refJobDetail.current.classList.contains("job-container-visibility")){
+                    refJobDetail.current.classList.remove("job-container-visibility");
+                }
+            }
+        };
+    
+        window.addEventListener('click', handleClickOutside);
+    
+        return () => {
+            window.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
+
+    function showJobDetail(){
+        refJobDetail.current.classList.add("job-container-visibility");
+        console.log(refJobDetail.current.classList);
+    }
 
   return (<>
     <div className='card-container'>
@@ -33,7 +67,7 @@ const JobCard = (props) => {
             <h3>Job description</h3>
             <p>{jobDetailsFromCompany.substring(0,300)}</p>
             <div>
-                <a >Show more</a>
+                <a onClick={showJobDetail}>Show more</a>
             </div>
         </div>}
 
@@ -49,7 +83,27 @@ const JobCard = (props) => {
         </div>
     </div>
 
-   
+     <div className='job-container' ref={refJobDetail}>
+        <div className='job-detail' >
+            <div>
+                <h2>About the Role</h2>
+                <h4>Overview</h4>
+
+                <span>Company name: <strong>{companyName} </strong></span>
+                <h4>Role: <strong>{jobRole}</strong></h4>
+                <ul>
+                    <li>Salary: {minJdSalary} {salaryCurrencyCode} per annum</li>
+                    <li>Experience: {minExp}+ years</li>
+                    <li>Location: {location}</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Job description</h3>
+                <p>{jobDetailsFromCompany}</p>
+            </div>
+            <Button variant="contained" color='primary'>Apply for this job</Button>
+        </div>
+    </div>
   </>
   )
 }

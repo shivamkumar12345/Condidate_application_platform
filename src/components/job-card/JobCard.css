@@ -87,3 +87,52 @@ button{
     word-wrap: break-word;
 }
 
+.job-container{
+    position: fixed;
+    z-index: 1000;
+    inset: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+    opacity: 0;
+  }
+
+.job-container-visibility{
+    visibility: visible;
+    opacity: 1;
+}
+  
+.job-detail {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 400px;
+      max-width: 80%;
+      max-height: 60vh;
+      overflow-y: auto;
+      background-color: rgb(255, 255, 255);
+      outline: solid 0px;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 11px 15px -7px, rgba(0, 0, 0, 0.14) 0px 24px 38px 3px, rgba(0, 0, 0, 0.12) 0px 9px 46px 8px;
+      padding: 16px;
+      border-radius: 10px;
+
+      h2,h3{
+        font-size: 1.25rem;
+        line-height: 1.6;
+        font-weight: 600;
+        }
+        span {
+            display: inline-block;
+            margin-bottom: 16px;  
+        }
+
+        strong{
+            text-transform: capitalize;
+        }
+
+        ul{
+            padding-left: 28px;
+            font-weight: 400;
+            font-size: 1rem;
+        }
+  }

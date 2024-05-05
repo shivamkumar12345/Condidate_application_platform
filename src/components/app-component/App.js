@@ -1,14 +1,16 @@
 import React,{useEffect, useState} from 'react'
-import { CircularProgress } from '@mui/material'
+import { CircularProgress, OutlinedInput } from '@mui/material'
 import "./App.css"
 import getData from "../../services/api-service"
 import JobCard from '../job-card/JobCard'
+import FilterType from '../filter-type/FilterType'
 const loadedData =[];
 const App = () => {
   const [jobList,setJobList] = useState([]);
   const [isLoading,setLoading] = useState(true);
   const [error,setError] = useState(""); 
   const [offset, setOffset] = useState(0);
+  const [companyName,setCompanyName] = useState("");
  
 
   useEffect(() => {
@@ -57,9 +59,28 @@ const App = () => {
       {error}
     </div>
   }
+  function onFilterSelect(type,selectedOptions){
+    console.log(type + " " + selectedOptions);
+  }
 
   return (
     <>
+     <div className='filter-container'>
+      <FilterType type={"Min experience"} onChange={onFilterSelect}/>
+      <FilterType type={"Min base pay"} onChange={onFilterSelect}/>  
+      <FilterType type={"Job role"} onChange={onFilterSelect}/>  
+      <FilterType type={"Remote"} onChange={onFilterSelect}/>
+      <FilterType type={"location"} onChange={onFilterSelect}/>
+      <OutlinedInput
+            placeholder="Search Company Name" 
+            id="company_name"
+            value={companyName}
+            onChange={(event) => {
+              setCompanyName(event.target.value);
+            }}
+          />
+     
+    </div>
     <div className='jobList'>
         {jobList && jobList?.map(jobDetail =>{
           return <JobCard key={jobDetail.jdUid} jobDetail={jobDetail}/>

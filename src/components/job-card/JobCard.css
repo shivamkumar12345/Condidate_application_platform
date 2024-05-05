@@ -4,7 +4,8 @@
     --text-color: #8b8b8b;
 }
 .card-container{
-    max-width: 350px;
+    max-width: 320px;
+    height: 400px;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
@@ -39,7 +40,12 @@
 
     }
 }
-
+#estimated_salary{
+    color: var(--text-color);
+    width: 100%;
+    font-weight: 600;
+    margin: 8px 0;
+}
 .card-body{
     height: 230px;
     overflow: hidden;

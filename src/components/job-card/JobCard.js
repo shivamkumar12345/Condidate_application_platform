@@ -61,11 +61,13 @@ const JobCard = (props) => {
                 {location && <h4>{location}</h4>}
             </div>
         </div>
+        { minJdSalary && maxJdSalary &&
+            <p id='estimated_salary'>Estimated Salary: {minJdSalary} - {maxJdSalary} LPA</p>}
 
         {jobDetailsFromCompany && 
         <div className='card-body'>
             <h3>Job description</h3>
-            <p>{jobDetailsFromCompany.substring(0,300)}</p>
+            <p>{jobDetailsFromCompany.substring(0,200)}</p>
             <div>
                 <a onClick={showJobDetail}>Show more</a>
             </div>

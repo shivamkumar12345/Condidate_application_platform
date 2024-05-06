@@ -1,6 +1,9 @@
 # Condidate_application_platform
 created a candidate application platform that allows users to view job listings, filter jobs based on various criteria, and implement infinite scroll for a seamless browsing experience. The platform should provide a user-friendly interface for viewing and applying to jobs.
 
+Live link of the app
+https://66386cef240d767975e97ff1--sensational-heliotrope-f6ebed.netlify.app/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

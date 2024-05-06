@@ -25,6 +25,11 @@
 }
 #company_name{
    width: 25ch;
-   padding:0 12px!important;
+   padding:8px 12px!important;
    color:#8b8b8b;
+   background-color: hsl(0, 0%, 100%);
+   border-color: hsl(0, 0%, 80%);
+   border-radius: 4px;
+   border-style: solid;
+   border-width: 1px;
 }

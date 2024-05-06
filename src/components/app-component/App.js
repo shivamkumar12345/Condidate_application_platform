@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import { CircularProgress, OutlinedInput } from '@mui/material'
+import { CircularProgress } from '@mui/material'
 import "./App.css"
 import getData from "../../services/api-service"
 import JobCard from '../job-card/JobCard'
@@ -149,7 +149,7 @@ useEffect(()=>{
       <FilterType type={"Job role"} onChange={onFilterSelect}/>  
       <FilterType type={"Remote"} onChange={onFilterSelect}/>
       <FilterType type={"location"} onChange={onFilterSelect}/>
-      <OutlinedInput
+      <input
             placeholder="Search Company Name" 
             id="company_name"
             value={companyName}

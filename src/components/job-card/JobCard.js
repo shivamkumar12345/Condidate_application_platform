@@ -22,7 +22,7 @@ const JobCard = (props) => {
             event.stopPropagation();
         }
 
-        document.querySelector(".job-detail").addEventListener("click",stopClickEventInsideJobDetail);
+        refJobDetail.current.childNodes[0].addEventListener("click",stopClickEventInsideJobDetail);
 
         return ()=>{
             window.removeEventListener("click",stopClickEventInsideJobDetail);
